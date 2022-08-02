@@ -42,10 +42,10 @@ class User {
    *
    */
   static async update(id, data) {
-    console.log(id);
     const { setCols, values } = sqlForPartialUpdate(data, {
       first_name: "first_name",
-      last_ame: "last_name",
+      last_name: "last_name",
+      email: "email"
     });
 
     const idVarIdx = "$" + (values.length + 1);
