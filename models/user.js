@@ -45,7 +45,7 @@ class User {
     const { setCols, values } = sqlForPartialUpdate(data, {
       first_name: "first_name",
       last_name: "last_name",
-      email: "email"
+      email: "email",
     });
 
     const idVarIdx = "$" + (values.length + 1);
@@ -144,17 +144,15 @@ class User {
    *
    **/
   static async setAccessToken(token, id) {
-
     const access_token_id = await db.query(
       `
       INSERT INTO access_tokens
         (user_id, plaid_access_token)
       VALUES ($1, $2)
       RETURNING id
-      `, 
+      `,
       [id, token]
-    )
-
+    );
 
     const result = await db.query(
       `

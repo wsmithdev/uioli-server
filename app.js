@@ -11,18 +11,18 @@ const { authenticateJWT } = require("./middleware/auth");
 const authRoutes = require("./routes/auth");
 
 const usersRoutes = require("./routes/users");
-const bodyParser = require( "body-parser" );
+const bodyParser = require("body-parser");
 
-const plaidRoutes = require("./routes/plaid")
-const cardRoutes = require("./routes/cards")
-const tokenRoutes = require("./routes/token")
+const plaidRoutes = require("./routes/plaid");
+const cardRoutes = require("./routes/cards");
+const tokenRoutes = require("./routes/token");
 
-const { cron } = require("./cron")
+const { cron } = require("./cron");
 
 const app = express();
 
-app.use(bodyParser.urlencoded({extended: false}))
-app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(cors());
 app.use(authenticateJWT);
 
@@ -32,13 +32,11 @@ app.use("/plaid", plaidRoutes);
 app.use("/cards", cardRoutes);
 app.use("/token", tokenRoutes);
 
-cron()
-
-
+cron();
 
 /** Handle 404 errors -- this matches everything */
 app.use(function (req, res, next) {
-  console.log("404 route was hit")
+  console.log("404 route was hit");
   return next(new NotFoundError());
 });
 

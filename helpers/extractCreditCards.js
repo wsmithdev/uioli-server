@@ -1,11 +1,11 @@
 const extractCreditCards = (accounts) => {
-    let creditCards = []
+  let creditCards = [];
 
-    for (const account of accounts) {
-        if (account.type === "credit") creditCards.push(account)
-    }
+  for (const account of accounts) {
+    if (account.type === "credit") creditCards.push(account);
+  }
 
-    return creditCards
+  return creditCards;
 };
 
 module.exports = {

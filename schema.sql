@@ -36,26 +36,3 @@ CREATE TABLE access_tokens (
   plaid_access_token TEXT
 );
 
-
-SELECT
-  cards.user_id,
-  a.bank_name,
-  b.days
-FROM cards
-INNER JOIN banks a ON cards.bank_name_id = a.id
-INNER JOIN usage_freq b ON cards.usage_freq_id = b.id;
-
-SELECT 
-            cards.id,
-            cards.user_id,
-            bank.bank_name,
-            cards.usage_freq_id,
-            freq.days,
-           
-            cards.last_used,
-            cards.next_use
-
-          FROM cards
-        FULL OUTER JOIN banks bank ON cards.bank_name_id = bank.id
-        FULL OUTER JOIN usage_freq freq ON cards.usage_freq_id = freq.id
-          WHERE user_id = 1;

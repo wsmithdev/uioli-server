@@ -27,7 +27,7 @@ router.get("/", async function (req, res, next) {
   try {
     const user_id = res.locals.user.id;
     const cards = await Card.getUserCards(user_id);
-    console.log(cards)
+    console.log(cards);
     return res.json({ cards });
   } catch (err) {
     return next(err);
@@ -38,36 +38,34 @@ router.patch("/:card_id", async function (req, res, next) {
   try {
     const card_id = req.params.card_id;
     const days = req.body.days;
-    const freq = await Card.updateFreq(days, card_id)
-    const nextUse = await Card.updateNextUse(card_id)
+    const freq = await Card.updateFreq(days, card_id);
+    const nextUse = await Card.updateNextUse(card_id);
 
-    res.json({freq, nextUse})
-
-  } catch(err){
-    return next(err)
+    res.json({ freq, nextUse });
+  } catch (err) {
+    return next(err);
   }
-})
+});
 
 router.delete("/:card_id", async function (req, res, next) {
   try {
     const card_id = req.params.card_id;
-    const resp = await Card.removeCard(card_id)
-    console.log(resp)
-    res.json(resp)
-
-  } catch(err){
-    next(err)
+    const resp = await Card.removeCard(card_id);
+    console.log(resp);
+    res.json(resp);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 router.patch("/notifications/:card_id", async function (req, res, next) {
   try {
-    const card_id = req.params.card_id
-    const response = await Card.toggleNotifications(card_id)
-    res.json(response)
-  } catch(err){
-    next(err)
+    const card_id = req.params.card_id;
+    const response = await Card.toggleNotifications(card_id);
+    res.json(response);
+  } catch (err) {
+    next(err);
   }
-})
+});
 
 module.exports = router;

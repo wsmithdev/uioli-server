@@ -5,8 +5,8 @@ sgMail.setApiKey(
 
 const sendEmail = ({ email, first_name, bank_name, card_name }) => {
   const msg = {
-    to: email, // Change to your recipient
-    from: "will.smith1505@gmail.com", // Change to your verified sender
+    to: email, 
+    from: "will.smith1505@gmail.com", 
     subject: "Use It Or Lose It",
     text: `text`,
     html: `<strong>Hi, ${first_name}! This is a reminder to user your ${bank_name} ${card_name} credit card today.</strong>`,

@@ -19,10 +19,8 @@ router.post("/:id", async function (req, res, next) {
     const token = req.body.token;
     const id = req.params.id;
 
-    const result = await User.setAccessToken(token, id)
-    return res.json(result.rows[0])
-
-  
+    const result = await User.setAccessToken(token, id);
+    return res.json(result.rows[0]);
   } catch (err) {
     return next(err);
   }

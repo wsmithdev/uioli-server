@@ -3,7 +3,6 @@
 /** Routes for authentication. */
 
 const jsonschema = require("jsonschema");
-
 const User = require("../models/user");
 const express = require("express");
 const router = new express.Router();
@@ -14,8 +13,8 @@ const { BadRequestError } = require("../expressError");
 
 /** POST /
  *
- * Authorization required: 
- * 
+ * Authorization required:
+ *
  */
 
 router.post("/signin", async function (req, res, next) {
@@ -28,9 +27,5 @@ router.post("/signin", async function (req, res, next) {
     return next(err);
   }
 });
-
-
-
-
 
 module.exports = router;
